@@ -1,0 +1,195 @@
+'FreeImage.dll 1.4.4 DEC file for XB
+'see FreeImage.h 
+
+
+' Version routines -----------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_GetVersion()
+EXTERNAL CFUNCTION FreeImage_GetCopyrightMessage()
+
+' Message output functions
+
+EXTERNAL CFUNCTION FreeImage_SetOutputMessage(omf) 
+
+' MMX routines --------------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_EnableMMX()
+EXTERNAL CFUNCTION FreeImage_DisableMMX()
+
+' Image Unload routines  -----------------------------------
+
+EXTERNAL CFUNCTION FreeImage_Allocate(width, height, bpp) 
+EXTERNAL CFUNCTION FreeImage_Unload(dibAddr) 		 
+
+' Image Load routines  -------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_LoadBMP(filenameAddr, flags) 
+EXTERNAL CFUNCTION FreeImage_LoadICO(filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_LoadJPEG(filenameAddr, flags)  
+EXTERNAL CFUNCTION FreeImage_LoadKOALA(filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_LoadPCD(filenameAddr, flags)  
+EXTERNAL CFUNCTION FreeImage_LoadPCX(filenameAddr, flags) 
+EXTERNAL CFUNCTION FreeImage_LoadPNM(filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_LoadPNG(filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_LoadRAS(filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_LoadTARGA(filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_LoadTIFF(filenameAddr, flags) 
+
+' Image Save routines --------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_SaveBMP(dibAddr, filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_SaveJPEG(dibAddr, filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_SavePNG(dibAddr, filenameAddr, flags)	
+EXTERNAL CFUNCTION FreeImage_SavePNM(dibAddr, filenameAddr, flags)				
+EXTERNAL CFUNCTION FreeImage_SavePCX(dibAddr, filenameAddr, flags)
+EXTERNAL CFUNCTION FreeImage_SaveTIFF(dibAddr, filenameAddr, flags)
+
+' FileType routines ------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_GetFileType (fileNameAddr, size)
+EXTERNAL CFUNCTION FreeImage_GetFileTypeFromExt(extAddr)
+EXTERNAL CFUNCTION FreeImage_GetFileTypeFromFormat(format)
+
+' FreeImage info routines -------------------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_GetTransparencyCount(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetTransparencyTable(dibAddr)
+EXTERNAL CFUNCTION FreeImage_SetTransparencyTable(dibAddr, tableAddr, UBYTE count)
+
+' DIB info routines --------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_GetBits(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetBitsRowCol(dibAddr, col, row)
+EXTERNAL CFUNCTION FreeImage_GetBPP(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetColorsUsed(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetColorType(dibAddr) 
+EXTERNAL CFUNCTION FreeImage_GetDIBSize(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetDotsPerMeterX(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetDotsPerMeterY(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetHeight(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetInfo(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetInfoHeader(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetLine(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetPalette(dibAddr)	
+EXTERNAL CFUNCTION FreeImage_GetPitch(dibAddr)
+EXTERNAL CFUNCTION FreeImage_GetScanLine(dibAddr, scanline)
+EXTERNAL CFUNCTION FreeImage_GetWidth(dibAddr)
+
+' Conversion routines --------------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_ConvertTo8Bits(dibAddr, type)
+EXTERNAL CFUNCTION FreeImage_ConvertTo16Bits(dibAddr, type)
+EXTERNAL CFUNCTION FreeImage_ConvertTo24Bits(dibAddr, type)
+EXTERNAL CFUNCTION FreeImage_ConvertTo32Bits(dibAddr, type)
+EXTERNAL CFUNCTION FreeImage_ColorQuantize(dibAddr, quantize)
+EXTERNAL CFUNCTION FreeImage_ConvertToGreyscale(dibAddr)
+
+' Effects --------------------------------------------
+
+EXTERNAL CFUNCTION FreeImage_AddAlphaMask(dibAddr, maskAddr)
+EXTERNAL CFUNCTION FreeImage_Blur(dibAddr) 
+EXTERNAL CFUNCTION FreeImage_Brighten(dibAddr, DOUBLE factor) 
+EXTERNAL CFUNCTION FreeImage_Clone(dibAddr)
+EXTERNAL CFUNCTION FreeImage_Combine(dib1Addr, dib2Addr, x, y, alpha)
+EXTERNAL CFUNCTION FreeImage_Crop(dibAddr, left, top, right, bottom)
+EXTERNAL CFUNCTION FreeImage_Darken(dibAddr, DOUBLE factor) 
+EXTERNAL CFUNCTION FreeImage_Flip(dibAddr) 
+EXTERNAL CFUNCTION FreeImage_Invert(dibAddr) 
+EXTERNAL CFUNCTION FreeImage_MaskCombine24(dib1Addr, dib2Addr, maskAddr, x, y)
+EXTERNAL CFUNCTION FreeImage_MaskCombine24Ex(pdstAddr, dstx, dsty, width, height, psrcAddr, pmaskAddr, srcx, srcy)
+EXTERNAL CFUNCTION FreeImage_MaskCombine32(dib1Addr, dib2Addr, x, y)
+EXTERNAL CFUNCTION FreeImage_MaskCombine32Ex(pdstAddr, dstx, dsty, width, height, pSrcAddr, srcx, srcy)
+EXTERNAL CFUNCTION FreeImage_Mirror(dibAddr)
+EXTERNAL CFUNCTION FreeImage_Rotate(dibAddr, DOUBLE angle)
+
+' Constants ----------------------------------------
+
+' FREE_IMAGE_COLOR_TYPE
+$$FIC_MINISWHITE = 0
+$$FIC_MINISBLACK = 1
+$$FIC_RGB        = 2
+$$FIC_PALLETTE   = 3
+
+' FREE_IMAGE_QUANTIZE
+$$FIQ_WUQUANT	= 0
+
+' Free Image File Formats
+$$FIF_UNKNOWN 	= 0
+$$FIF_BMP 			= 1
+$$FIF_ICO 			= 2
+$$FIF_JPEG 			= 3
+$$FIF_KOALA 		= 4
+$$FIF_PBM 			= 5
+$$FIF_PCD 			= 6
+$$FIF_PCX 			= 7
+$$FIF_PGM 			= 8
+$$FIF_PNG 			= 9
+$$FIF_PPM 			= 10
+$$FIF_RAS 			= 11
+$$FIF_TARGA 		= 12
+$$FIF_TIFF 			= 13
+
+' BMP Flags
+$$BMP_DEFAULT = 0
+
+' ICO Flags
+$$ICO_DEFAULT = 0
+$$ICO_FIRST   = 0
+$$ICO_SECOND  = 1
+$$ICO_THIRD   = 2 
+
+' KOALA Flags
+$$KOALA_DEFAULT = 0
+
+' JPEG Flags
+$$JPEG_DEFAULT  = 0
+$$JPEG_FAST     = 1
+$$JPEG_ACCURATE = 2 
+
+$$JPEG_QUALITYSUPERB  = 0x80  		'save flags
+$$JPEG_QUALITYGOOD    = 0x100  		'you can use either this
+$$JPEG_QUALITYNORMAL  = 0x200  		'or a quality id from 0 to 100
+$$JPEG_QUALITYAVERAGE = 0x400
+$$JPEG_QUALITYBAD     = 0x800
+
+' PCD Flags
+$$PCD_DEFAULT   = 0
+$$PCD_BASE      = 1
+$$PCD_BASEDIV4  = 2
+$$PCD_BASEDIV16 = 3
+
+' PCX Flags
+$$PCX_DEFAULT   = 0
+
+' PNG Flags
+$$PNG_DEFAULT 	= 0
+
+' PNM Flags
+$$PNM_DEFAULT 		= 0
+$$PNM_SAVE_RAW 		= 0				'If set the writer saves in RAW format (i.e. P4, P5 or P6)
+$$PNM_SAVE_ASCII 	= 1				'If set the writer saves in ASCII format (i.e. P1, P2 or P3)
+
+' RAS Flags
+$$RAS_DEFAULT	=0
+
+' TARGA Flags
+$$TARGA_DEFAULT       = 0  
+$$TARGA_LOAD_ARGB8888 = 1  		'If set the loader doesn't convert ARGB8888 -> RGB888.
+$$TARGA_LOAD_RGB555   = 2			'If set the loader doesn't convert 16bit RGB555 -> 24bit RGB888.
+
+' TIFF Flags
+$$TIFF_DEFAULT = 0
+$$TIFF_DIRECTORY0 = 0
+$$TIFF_DIRECTORY1 = 1
+$$TIFF_DIRECTORY2 = 2
+$$TIFF_DIRECTORY3 = 3
+$$TIFF_DIRECTORY4 = 4
+$$TIFF_DIRECTORY5 = 5
+$$TIFF_DIRECTORY6 = 6
+$$TIFF_DIRECTORY7 = 7
+$$TIFF_DIRECTORY8 = 8
+$$TIFF_DIRECTORY9 = 9
+
+
+
+ 
